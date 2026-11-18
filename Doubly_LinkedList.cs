@@ -1,7 +1,7 @@
 public class Doubly_LinkedList
 {
-    private Node head;
-    private Node tail;
+    private DoublyNode? head;
+    private DoublyNode? tail;
 
     public Doubly_LinkedList()
     {

@@ -1,6 +1,6 @@
 public class LinkedList
 {
-private Node head;
+private SinglyNode? head;
 
     public LinkedList()
     {
