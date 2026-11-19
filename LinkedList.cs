@@ -15,9 +15,17 @@ public class LinkedList
     public void AddFirst(int value)
     {
         Console.WriteLine("AddFirst " + value);
-        SinglyNode firstNode = new SinglyNode(value);
-        head = firstNode;
-        firstNode.next = null;
+        if (isEmpty())
+        {
+            head = new SinglyNode(value);
+            head.next = null;
+        }
+        else
+        {
+            SinglyNode firstNode = new SinglyNode(value);
+            firstNode.next = head;
+            head = firstNode;
+        }
     }
 
     public void AddLast(int value)
@@ -51,7 +59,7 @@ public class LinkedList
         }
         else if (index == 0)
         {
-            addFirst(value);
+            AddFirst(value);
         }
         else
         {
@@ -117,7 +125,7 @@ public class LinkedList
         {
             throw new InvalidOperationException("List is empty");
         }
-        else if (head.Value == value)
+        else if (head.value == value)
         {
             head = head.next;
         }
@@ -146,7 +154,7 @@ public class LinkedList
         }
         else if (index < 0)
         {
-            throw new ArgumentOutOfRangeException("Index cannot be negative");
+            throw new ArgumentOutOfRangeException("Index " + index + " cannot be negative");
         }
         else
         {
@@ -155,7 +163,7 @@ public class LinkedList
             {
                 if (current.next == null && i < index - 1)
                 {
-                    throw new ArgumentOutOfRangeException("Index is out of range");
+                    throw new ArgumentOutOfRangeException("Index " + index + " is out of range");
                 }
                 current = current.next;
             }
@@ -248,7 +256,7 @@ public class LinkedList
                     Console.Write(current.value + " -> ");
                 }
             }
-            Console.Write("]");
+            Console.WriteLine("]");
             Console.WriteLine();
         }
     }
