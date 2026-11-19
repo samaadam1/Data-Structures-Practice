@@ -89,6 +89,10 @@ public class LinkedList
         {
             throw new InvalidOperationException("List is empty");
         }
+        else if (head.next == null) // list has only one node
+        {
+            Clear();
+        }
         else
         {
             // we dont need to worry about deleting the node, because C# has garbage collection
@@ -105,16 +109,16 @@ public class LinkedList
         }
         else if (head.next == null) // list has only one node
         {
-            head = null;
+            Clear();
         }
         else
         {
             SinglyNode current = head;
-            while (current.next != null)
+            while (current.next.next != null) // point to the second last node
             {
                 current = current.next;
             }
-            current = null;
+            current.next = null;
         }
     }
 
@@ -127,8 +131,12 @@ public class LinkedList
         }
         else if (head.value == value)
         {
-            head = head.next;
+            RemoveFirst();
         }
+        // else if (!Contains(value))
+        // {
+        //     throw new InvalidOperationException("Value not found in list");
+        // }
         else
         {
             SinglyNode current = head;
@@ -179,6 +187,14 @@ public class LinkedList
         {
             throw new InvalidOperationException("List is empty");
         }
+        else if (head.value == value)
+        {
+            return 0;
+        }
+        // else if (!Contains(value))
+        // {
+        //     throw new InvalidOperationException("Value not found in list");
+        // }
         else
         {
             int index = 0;
