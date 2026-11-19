@@ -7,8 +7,8 @@ class Program
     {
         try
         {
-            TestLinkedList();
-            // TestDoublyLinkedList();
+            //TestLinkedList();
+            TestDoublyLinkedList();
         }
         catch (Exception ex)
         {
@@ -76,7 +76,23 @@ class Program
         {
             Console.WriteLine(ex.Message);
         }
-        list.print();
+
         list.printBackward();
+
+        list.print();
+        int value = list.Get(1);
+        Console.WriteLine("Value at index 1: " + value);
+        int index = list.IndexOf(5);
+        Console.WriteLine("Index of 5: " + index);
+        bool contains = list.Contains(5);
+        Console.WriteLine("Contains 5: " + contains);
+        contains = list.Contains(10);
+        Console.WriteLine("Contains 10: " + contains);
+        list.RemoveFirst();
+        list.print();
+        list.RemoveLast();
+        list.print();
+        list.RemoveLast();
+        list.print();
     }
 }
